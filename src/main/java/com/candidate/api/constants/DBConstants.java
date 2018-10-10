@@ -931,7 +931,7 @@ public interface DBConstants {
 
     String FETCH_COMMON_TALENT_POOL_JOB = "job.fetchCommonTalentPoolJob";
     String FETCH_COMMON_TALENT_POOL_CAMPAIGN = "campaign.fetchCommonTalentPoolCampaign";
-    String FETCH_JOB_WEBSERVICE_CONFIG = "JobWebserviceConfig.findJobWebServiceConfig";
+    String FETCH_JOB_WEBSERVICE_CONFIG = "WebServiceConfig.findJobWebServiceConfig";
     String FIND_ALL_JOBS_LIST = "Job.findAllJobsList";
     String FIND_ALL_JOBS_WITHIN_RANGE = "Job.findAllJobsListWithinRange";
     String ACCESS_KEY = "accessKey";

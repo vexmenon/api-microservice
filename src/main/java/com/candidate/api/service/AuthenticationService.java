@@ -2,10 +2,10 @@ package com.candidate.api.service;
 
 
 import com.candidate.api.constants.ApplicationConstants;
-import com.candidate.api.entities.JobWebserviceConfig;
+import com.candidate.api.entities.WebServiceConfig;
 import com.candidate.api.entities.RestApiLog;
 import com.candidate.api.exception.ApplicationException;
-import com.candidate.api.repositories.JobWebserviceConfigRepository;
+import com.candidate.api.repositories.WebserviceConfigRepository;
 import com.candidate.api.repositories.RestApiLogRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +19,20 @@ public class AuthenticationService {
             .getLogger(AuthenticationService.class);
 
     @Autowired
-    private JobWebserviceConfigRepository jobWebserviceConfigRepository;
+    private WebserviceConfigRepository webserviceConfigRepository;
 
     @Autowired
     private RestApiLogRepository restApiLogRepository;
 
-    public JobWebserviceConfig fetchJobServiceConfig(String accessKey, String accessSecret) throws ApplicationException{
-        JobWebserviceConfig jobWebserviceConfig = null;
+    public WebServiceConfig fetchJobServiceConfig(String accessKey, String accessSecret) throws ApplicationException{
+        WebServiceConfig webServiceConfig = null;
         try{
-            jobWebserviceConfig = jobWebserviceConfigRepository.findByAccessKeyAndAccessSecretAndStatus(accessKey,accessSecret, ApplicationConstants.CHAR_A);
+            webServiceConfig = webserviceConfigRepository.findByAccessKeyAndAccessSecretAndStatus(accessKey,accessSecret, ApplicationConstants.CHAR_A);
         }catch(Exception e){
             e.printStackTrace();
             logger.error("Error in fetchJobServiceConfig"+e);
         }
-        return jobWebserviceConfig;
+        return webServiceConfig;
 
     }
 

@@ -2,8 +2,7 @@ package com.candidate.api.interceptor;
 
 import com.candidate.api.constants.ApplicationConstants;
 import com.candidate.api.constants.ErrorConstants;
-import com.candidate.api.entities.JobWebserviceConfig;
-import com.candidate.api.entities.RestApiLog;
+import com.candidate.api.entities.WebServiceConfig;
 import com.candidate.api.service.AuthenticationService;
 import com.candidate.api.util.CommonUtil;
 import com.candidate.api.util.HttpUtil;
@@ -67,7 +66,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
            }
            String decodeAccessToken = CommonUtil.decryptTwoWay(accessToken);
            String []tokens = decodeAccessToken.split(":");
-           JobWebserviceConfig config = authenticationService.fetchJobServiceConfig(tokens[0], tokens[1]);
+           WebServiceConfig config = authenticationService.fetchJobServiceConfig(tokens[0], tokens[1]);
            //Checks if record exists in jobwebservice table
            if(config!=null){
                request.setAttribute(ApplicationConstants.COMPANY_MSTR_SEQ_ATTR, config.getCompanyMstrSeq());
