@@ -15,6 +15,7 @@ public class RestApiLog implements java.io.Serializable {
     private String requestMessage;
     private String responseMessage;
     private String operation;
+    private String description;
     private char status;
     private int createdBy;
     private Date createDttm;
@@ -24,7 +25,8 @@ public class RestApiLog implements java.io.Serializable {
     public RestApiLog() {
     }
 
-    public RestApiLog(Integer companyMstrSeq, String transactionId,String requestMessage,String responseMessage , String operation, char status, int createdBy, Date createDttm) {
+    public RestApiLog(String description,Integer companyMstrSeq, String transactionId,String requestMessage,String responseMessage , String operation, char status, int createdBy, Date createDttm) {
+        this.description = description;
         this.companyMstrSeq = companyMstrSeq;
         this.transactionId = transactionId;
         this.requestMessage = requestMessage;
@@ -91,6 +93,15 @@ public class RestApiLog implements java.io.Serializable {
 
     public void setOperation(String operation) {
         this.operation = operation;
+    }
+
+    @Column(name = "DESCRIPTION", nullable = true, length = 50)
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     @Column(name = "STATUS", nullable = false, length = 1)
     public char getStatus() {

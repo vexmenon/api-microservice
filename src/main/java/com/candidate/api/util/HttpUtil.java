@@ -56,7 +56,7 @@ public class HttpUtil {
 
     public void parseRequestAndLogInDatabase(HttpServletRequest request,String transactionId) throws ApplicationException {
         String req = HttpUtil.getRequestBody(request);
-        RestApiLog restApiLog = new RestApiLog(ApplicationConstants.INT_ZERO,transactionId, req, ApplicationConstants.STR_EMPTY,"MIC-CAND-SERV",ApplicationConstants.CHAR_A,ApplicationConstants.INT_ZERO, new Date());
+        RestApiLog restApiLog = new RestApiLog("MIC-CAND-SERV",ApplicationConstants.INT_ZERO,transactionId, req, ApplicationConstants.STR_EMPTY,"MIC-CAND-SERV",ApplicationConstants.CHAR_A,ApplicationConstants.INT_ZERO, new Date());
         authenticationService.saveRestApiLogRecord(restApiLog,ApplicationConstants.TRUE);
     }
 
@@ -70,9 +70,9 @@ public class HttpUtil {
         RestApiLog restApiLog = null;
         if(isInsert){
             if(StringUtil.isStringNull(requestVO.getRipplehireId())){
-                restApiLog = new RestApiLog(requestVO.getCompanyMstrSeq(),transactionId, ApplicationConstants.STR_EMPTY, ApplicationConstants.STR_EMPTY,"MIC-CAND-SERV",ApplicationConstants.CHAR_A,ApplicationConstants.INT_ZERO, new Date());
+                restApiLog = new RestApiLog("MIC-CAND-SERV",requestVO.getCompanyMstrSeq(),transactionId, ApplicationConstants.STR_EMPTY, ApplicationConstants.STR_EMPTY,"MIC-CAND-SERV",ApplicationConstants.CHAR_A,ApplicationConstants.INT_ZERO, new Date());
             }else{
-                restApiLog = new RestApiLog(requestVO.getCompanyMstrSeq(),transactionId, objectMapper.writeValueAsString(requestVO), ApplicationConstants.STR_EMPTY,"MIC-CAND-SERV",ApplicationConstants.CHAR_A,ApplicationConstants.INT_ZERO, new Date());
+                restApiLog = new RestApiLog("MIC-CAND-SERV",requestVO.getCompanyMstrSeq(),transactionId, objectMapper.writeValueAsString(requestVO), ApplicationConstants.STR_EMPTY,"MIC-CAND-SERV",ApplicationConstants.CHAR_A,ApplicationConstants.INT_ZERO, new Date());
             }
         }else{
             restApiLog = authenticationService.fetchRestApiLogByTransactionId(transactionId);
